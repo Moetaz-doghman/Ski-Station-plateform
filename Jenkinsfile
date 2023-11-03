@@ -3,8 +3,8 @@ pipeline {
     environment {
         dockerimagename = "ski"
         dockerImage = ""
-        nexusRepositoryURL = "192.168.33.10:8081/repository/oussama/"
-        nexusRepositoryName = "oussama"  // Replace with your Nexus repository name
+        nexusRepositoryURL = "192.168.33.10:8081/repository/doghman/"
+        nexusRepositoryName = "doghman"  // Replace with your Nexus repository name
         dockerImageVersion = "1.0"  // Replace with your desired image version
     }
 
@@ -14,8 +14,8 @@ pipeline {
         stage ('GIT') {
             steps {
                echo "Getting Project from Git";
-                git branch: 'ouss',
-                    url: 'https://github.com/oussjalleli/SKI_Plateform'
+                git branch: 'dogh',
+                    url: 'https://github.com/Moetaz-doghman/Ski-Station-plateform.git'
             }
         }
 
@@ -36,8 +36,8 @@ pipeline {
 
         stage('SonarCloud Analysis') {
                     environment {
-                        SONAR_ORGANIZATION = 'skioussama'
-                        SONAR_PROJECT_KEY = 'skioussama_ski'
+                        SONAR_ORGANIZATION = 'doghman'
+                        SONAR_PROJECT_KEY = 'doghman_ski'
                         SONAR_LOGIN = credentials('sonarcloud-token')
                     }
                     steps {
@@ -68,7 +68,7 @@ pipeline {
                 script {
                     def dockerImage = 'ski'
                     def dockerTag = 'latest'
-                    def nexusRegistryUrl = '172.17.0.2:8082/repository/oussama/'
+                    def nexusRegistryUrl = '172.17.0.2:8082/repository/doghman/'
                     def dockerUsername = 'admin'
                     def dockerPassword = 'nexus'
 
@@ -85,7 +85,7 @@ pipeline {
                         script {
                             def dockerImage = 'ski'
                             def dockerTag = 'latest'
-                            def nexusRegistryUrl = '172.17.0.2:8082/repository/oussama/'
+                            def nexusRegistryUrl = '172.17.0.2:8082/repository/doghman/'
                             def dockerUsername = 'admin'
                             def dockerPassword = 'nexus'
 
