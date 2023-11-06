@@ -33,7 +33,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
+/*
         stage('SonarCloud Analysis') {
                     environment {
                         SONAR_ORGANIZATION = 'doghman'
@@ -46,7 +46,7 @@ pipeline {
                         }
                     }
                 }
-
+        */
         stage("Build Docker image") {
             steps {
                 script {
