@@ -50,10 +50,16 @@ pipeline {
         stage("Build Docker image") {
             steps {
                 script {
-                    dockerImage = docker.build(dockerimagename, '.')
+                    try {
+                        dockerImage = docker.build(dockerimagename, '.')
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        error("Docker build failed: ${e.message}")
+                    }
                 }
             }
         }
+
 
 
 
