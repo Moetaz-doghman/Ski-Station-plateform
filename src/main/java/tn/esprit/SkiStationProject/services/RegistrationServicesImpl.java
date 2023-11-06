@@ -126,5 +126,10 @@ public class RegistrationServicesImpl implements  IRegistrationServices{
 
         return registrationRepository.numWeeksCourseOfInstructorBySupport(numInstructor, support);
     }
+    @Override
+    public void deleteRegistration(Long registrationId) {
+        registrationRepository.deleteById(registrationId);
+    }
+
 
 }
