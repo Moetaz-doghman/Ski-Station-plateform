@@ -1,10 +1,7 @@
 package tn.esprit.SkiStationProject;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.SkiStationProject.entities.Course;
 import tn.esprit.SkiStationProject.entities.Registration;
 import tn.esprit.SkiStationProject.entities.Skier;
@@ -15,29 +12,33 @@ import tn.esprit.SkiStationProject.repositories.SkierRepository;
 import tn.esprit.SkiStationProject.services.RegistrationServicesImpl;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-class RegistrationServicesMockitoTest {
+@SpringBootTest
+class RegistrationServicesImplTest {
 
-    @InjectMocks
     private RegistrationServicesImpl registrationServices;
 
-    @Mock
     private SkierRepository skierRepository;
-    @Mock
     private CourseRepository courseRepository;
-    @Mock
     private InstructorRepository instructorRepository;
-    @Mock
     private RegistrationRepository registrationRepository;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        skierRepository = mock(SkierRepository.class);
+        courseRepository = mock(CourseRepository.class);
+        instructorRepository = mock(InstructorRepository.class);
+        registrationRepository = mock(RegistrationRepository.class);
+
+        registrationServices = new RegistrationServicesImpl(
+                registrationRepository, skierRepository, courseRepository, instructorRepository
+        );
     }
 
     @Test
@@ -77,3 +78,4 @@ class RegistrationServicesMockitoTest {
 
     // Add more test cases for other methods as needed
 }
+
