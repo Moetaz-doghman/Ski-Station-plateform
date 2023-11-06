@@ -13,7 +13,8 @@ services:
       - '3306:3306'
     volumes:
       - mysql:/var/lib/mysql
-      - $PWD/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
   spring_app:
     container_name: ski
     image: 172.17.0.2:8082/repository/doghman/ski:latest
@@ -23,6 +24,7 @@ services:
       - '8090:8090'
     depends_on:
       - db
+
 volumes:
   mysql:
     driver: local
