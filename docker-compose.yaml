@@ -25,6 +25,8 @@ services:
     depends_on:
       - db
 
+#volumes:
+#  mysql:
+#    driver: local
 volumes:
   mysql:
-    driver: local
