@@ -33,7 +33,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
+        stage('SonarQube Analysis ') {
+             steps {
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                   }
+             }
         stage('SonarCloud Analysis') {
                     environment {
                         SONAR_ORGANIZATION = 'doghman'
@@ -45,7 +49,7 @@ pipeline {
                             sh "mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=${SONAR_ORGANIZATION} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.login=${SONAR_LOGIN}"
                         }
                     }
-                }
+        }
 
         stage("Build Docker image") {
             steps {
