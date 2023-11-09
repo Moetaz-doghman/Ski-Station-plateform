@@ -5,7 +5,7 @@ pipeline {
         dockerImage = ""
         nexusRepositoryURL = "192.168.33.10:8081/repository/doghman/"
         nexusRepositoryName = "doghman"  // Replace with your Nexus repository name
-        dockerImageVersion = "1.0"  // Replace with your desired image version
+        dockerImageVersion = "1.0"  // testing webhook
     }
 
     agent any
