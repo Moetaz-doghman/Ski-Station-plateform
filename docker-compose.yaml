@@ -18,7 +18,7 @@ services:
 
   spring_app:
     container_name: ski
-    image: 172.17.0.2:8082/repository/doghman/ski:latest
+    image: 172.17.0.3:8082/repository/doghman/ski:latest
     restart: on-failure
     build: .
     ports:
