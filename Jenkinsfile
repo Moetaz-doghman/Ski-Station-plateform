@@ -38,6 +38,7 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                    }
              }
+      /*
         stage('SonarCloud Analysis') {
                     environment {
                         SONAR_ORGANIZATION = 'doghman'
@@ -50,6 +51,7 @@ pipeline {
                         }
                     }
         }
+        */
 
         stage("Build Docker image") {
             steps {
